@@ -725,6 +725,21 @@ h3 { font-size: clamp(1.35rem, 2.2vw, 1.7rem); }
 }
 .contact-form button:hover { background: var(--mauve-deep); }
 
+/* Mapa v sekci Kontakt */
+.map-wrap {
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  border: 6px solid #fff;
+}
+.map-wrap iframe {
+  display: block;
+  width: 100%;
+  height: clamp(320px, 45vh, 460px);
+  border: 0;
+}
+
 /* ---------- Footer ---------- */
 
 .site-footer {
