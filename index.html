@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=4">
+  <link rel="stylesheet" href="assets/css/style.css?v=5">
 </head>
 <body>
 
@@ -265,6 +265,20 @@
   </div>
 </footer>
 
+<!-- Popup s oznámením — obsah a zapnutí se řídí v administraci (content/popup.json) -->
+<div class="popup-overlay" id="popup" hidden>
+  <div class="popup-card" role="dialog" aria-modal="true" aria-labelledby="popup-titel">
+    <button class="popup-close" type="button" aria-label="Schließen">×</button>
+    <img class="popup-bild" src="" alt="" hidden>
+    <div class="popup-body">
+      <h3 id="popup-titel"></h3>
+      <p class="popup-text" hidden></p>
+      <a class="btn solid popup-btn" href="" hidden></a>
+    </div>
+  </div>
+</div>
+
 <script src="assets/js/main.js?v=4"></script>
+<script src="assets/js/cms-content.js?v=1"></script>
 </body>
 </html>

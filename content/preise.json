@@ -1,0 +1,14 @@
+{
+  "pilates": [
+    { "name": "Individuelle Stunde", "dauer": "60 min", "preis": "60 €" },
+    { "name": "Kleine Gruppe bis 3 Personen", "dauer": "60 min", "preis": "35 € /Person" }
+  ],
+  "reiki": [
+    { "name": "Energetische Behandlung", "dauer": "30–45 min", "preis": "40 €" }
+  ],
+  "massage": [
+    { "name": "Rücken/Schulter/Nacken", "dauer": "ca. 60 min", "preis": "75 €" },
+    { "name": "Rücken/Beine", "dauer": "ca. 60 min", "preis": "75 €" },
+    { "name": "Ganzkörpermassage", "dauer": "ca. 120 min", "preis": "120 €" }
+  ]
+}

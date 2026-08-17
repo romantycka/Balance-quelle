@@ -1,0 +1,87 @@
+# Decap CMS — konfigurace administrace
+#
+# ZBÝVÁ PRO OSTRÝ PROVOZ (viz ADMIN.md):
+#   1. odkomentovat a doplnit base_url OAuth proxy
+#   2. branch přepnout na main (až se CMS verze nasadí)
+#   3. Aranka potřebuje GitHub účet s přístupem do repa
+
+backend:
+  name: github
+  repo: romantycka/Balance-quelle
+  branch: cms
+  # base_url: https://DOPLNIT-oauth-proxy.workers.dev
+
+# Lokální testování bez přihlašování: spusť `npx decap-server` a lokální
+# web server, pak otevři http://localhost:8123/admin/
+local_backend: true
+
+media_folder: assets/img/uploads
+public_folder: assets/img/uploads
+
+collections:
+  - name: obsah
+    label: "Obsah webu · Website-Inhalte"
+    files:
+
+      - name: popup
+        label: "Oznámení na úvodní stránce · Ankündigung (Popup)"
+        file: content/popup.json
+        fields:
+          - name: aktiv
+            label: "Zobrazit oznámení · Ankündigung anzeigen"
+            widget: boolean
+            default: false
+            hint: "Zapnuto = návštěvníkům se na úvodní stránce zobrazí okno s oznámením. · Ein = Besucher sehen das Popup auf der Startseite."
+          - name: titel
+            label: "Nadpis · Titel"
+            widget: string
+          - name: text
+            label: "Text · Text"
+            widget: text
+            required: false
+          - name: bild
+            label: "Obrázek (např. leták) · Bild (z. B. Flyer)"
+            widget: image
+            required: false
+          - name: button_text
+            label: "Text tlačítka · Button-Text"
+            widget: string
+            required: false
+          - name: button_link
+            label: "Odkaz tlačítka · Button-Link"
+            widget: string
+            required: false
+            hint: "Např. aktuelles.html nebo úplná adresa. · Z. B. aktuelles.html oder vollständige URL."
+
+      - name: preise
+        label: "Ceník · Preise"
+        file: content/preise.json
+        fields:
+          - name: pilates
+            label: "Pilates"
+            widget: list
+            fields: &polozka
+              - { name: name, label: "Název · Bezeichnung", widget: string }
+              - { name: dauer, label: "Délka · Dauer", widget: string }
+              - { name: preis, label: "Cena · Preis", widget: string }
+          - name: reiki
+            label: "Reiki"
+            widget: list
+            fields: *polozka
+          - name: massage
+            label: "Massage"
+            widget: list
+            fields: *polozka
+
+      - name: aktuelles
+        label: "Aktuality · Aktuelles"
+        file: content/aktuelles.json
+        fields:
+          - name: beitraege
+            label: "Příspěvky · Beiträge"
+            widget: list
+            hint: "Nový příspěvek přidej nahoru — na webu se zobrazují v tomto pořadí. · Neue Beiträge oben einfügen."
+            fields:
+              - { name: titel, label: "Nadpis · Titel", widget: string }
+              - { name: datum, label: "Datum · Datum", widget: string, hint: "Volný text, např. 8. Apr. · Freitext, z. B. 8. Apr." }
+              - { name: bild, label: "Obrázek/leták · Bild/Flyer", widget: image }
