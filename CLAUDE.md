@@ -13,6 +13,22 @@ framework, žádný build — co je v repu, to se servíruje.
 - Cca říjen 2026: převod na doménu balance-quelle.com přes Cloudflare
 - Majitel repa a spolupráce: uživatel (česky); Aranka žije v Německu
 
+## Dvě větve — POZOR, nepleť si je
+
+| větev | co to je | kdy do ní sahat |
+|-------|----------|-----------------|
+| `main` | **ostrá verze**, běží na GitHub Pages | běžné úpravy webu |
+| `cms`  | **verze 2 s administrací** pro Aranku (Decap CMS, popup, ceny/aktuality z JSON) | jen když uživatel mluví o administraci/CMS |
+
+- `cms` vychází z `main` a je o commity navíc — viz ADMIN.md (jen na větvi `cms`).
+- **Nikdy nemerguj `cms` do `main` bez výslovného pokynu uživatele.** Zprovoznění
+  vyžaduje OAuth (jeho účty), do té doby zůstává `cms` stranou.
+- Změnu, která patří oběma (oprava webu), udělej na `main` a pak
+  `git switch cms && git merge main`.
+- Cache-buster (viz pravidlo 2) má na každé větvi jinou hodnotu — vždy zvyšuj
+  tu, kterou vidíš v HTML na aktuální větvi.
+- Ověř si na začátku práce, kde jsi: `git branch --show-current`.
+
 ## Železná pravidla
 
 1. **Německé texty NIKDY neměň, nezkracuj, nedomýšlej ani nepřekládej.**
@@ -49,10 +65,19 @@ framework, žádný build — co je v repu, to se servíruje.
 index.html. Pozor: skrytý browser pane neumí screenshotovat odscrollované
 stavy (sticky prvky) — ověřuj měřením getBoundingClientRect přes JS.
 
-## Workflow dvou počítačů
+## Workflow dvou počítačů (Mac mini doma, MacBook na cestách)
 
 Vždy začni `git pull`, skonči `git add -A && git commit && git push`.
 Konflikt = na jednom stroji se zapomnělo pushnout; vyřeš merge, nic neztrácej.
+
+Poprvé na novém počítači:
+
+```
+cd ~/claude/code && git clone https://github.com/romantycka/Balance-quelle.git
+```
+
+Když `git push` selže na autentizaci, proveď uživatele přes `gh auth login`
+(účet **romantycka**, protokol HTTPS). Neřeš to za něj tokenem v kódu.
 
 ## Co ještě čeká
 
@@ -60,3 +85,6 @@ Konflikt = na jednom stroji se zapomnělo pushnout; vyřeš merge, nic neztráce
 - Před nasazením na doménu: Aranka musí zkontrolovat datenschutz.html
   (vynechané odstavce o Wix hostingu a Google Analytics; přibyl Google Maps
   embed) — v souboru je komentář.
+- Zprovoznění administrace na větvi `cms`: OAuth proxy (Cloudflare Worker),
+  GitHub OAuth App, účet pro Aranku, merge do main. Postup v ADMIN.md
+  (na větvi `cms`). Vyžaduje uživatelovy účty — sám to nedokončíš.
