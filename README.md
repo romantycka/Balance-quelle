@@ -20,7 +20,19 @@ assets/css/style.css
 assets/js/main.js
 assets/img/web/       optimalizované obrázky používané webem
 assets/img/original/  originály stažené z Wixu (archiv, kdyby Wix zanikl)
+assets/video/         videa na pozadí (stažená z původního Wix webu)
 ```
+
+## Scroll efekty
+
+- Hero na úvodu má video spirály na pozadí (zpomalené na 0.5× jako na Wixu),
+  podstránky Pilates/Massage/Gallery mají svá videa z původního webu.
+- Hero je „připnuté" (position: sticky) a obsah (`.sheet`) se přes něj nasouvá
+  se zaoblenými rohy a stínem. Patička leží pod obsahem a odkrývá se na konci.
+- `.parallax-band` = pásy s pevným pozadím (background-attachment: fixed;
+  na dotykových zařízeních se automaticky vypíná).
+- Kruhy v hero koláži mají parallax (`data-parallax` v main.js).
+- Vše respektuje `prefers-reduced-motion` — efekty se vypnou.
 
 ## Sekce Jóga (až budou podklady)
 

@@ -40,12 +40,17 @@
 <main>
 
   <section class="page-hero">
-    <img class="bg" src="assets/img/web/massage-kerzen.jpg" alt="">
+    <video class="bg" autoplay muted loop playsinline data-rate="0.7"
+           poster="assets/img/web/massage-tisch.jpg" aria-hidden="true">
+      <source src="assets/video/massage.mp4" type="video/mp4">
+    </video>
     <div class="container">
       <h1>Massage</h1>
       <p class="lede">Entspannen, einatmen und sich verwöhnen lassen...</p>
     </div>
   </section>
+
+  <div class="sheet">
 
   <section class="section">
     <div class="container split">
@@ -70,6 +75,9 @@
       </div>
     </div>
   </section>
+
+  <!-- Parallaxový pás — pevné pozadí -->
+  <div class="parallax-band" style="background-image: url('assets/img/web/massage-rosa.jpg');" role="presentation"></div>
 
   <section class="section">
     <div class="container">
@@ -98,6 +106,8 @@
       </div>
     </div>
   </section>
+
+  </div><!-- /.sheet -->
 
 </main>
 

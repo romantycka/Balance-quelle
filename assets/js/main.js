@@ -20,6 +20,43 @@ const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 10);
 window.addEventListener("scroll", onScroll, { passive: true });
 onScroll();
 
+// Videa na pozadí: zpomalené přehrávání (stejně jako na původním webu)
+document.querySelectorAll("video[data-rate]").forEach((v) => {
+  v.playbackRate = parseFloat(v.dataset.rate);
+});
+
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// Parallax: prvky s data-parallax se při scrollu posouvají různou rychlostí
+const parallaxEls = document.querySelectorAll("[data-parallax]");
+if (parallaxEls.length && !reducedMotion) {
+  let ticking = false;
+  const update = () => {
+    const y = window.scrollY;
+    parallaxEls.forEach((el) => {
+      el.style.transform = `translateY(${y * parseFloat(el.dataset.parallax)}px)`;
+    });
+    ticking = false;
+  };
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (!ticking) {
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    },
+    { passive: true }
+  );
+}
+
+// Odkrývaná patička: pojistka pro případ, že je vyšší než viewport
+const footer = document.querySelector(".site-footer");
+const checkFooter = () =>
+  footer?.classList.toggle("static", footer.offsetHeight > window.innerHeight * 0.9);
+window.addEventListener("resize", checkFooter);
+checkFooter();
+
 const observer = new IntersectionObserver(
   (entries) => {
     for (const e of entries) {

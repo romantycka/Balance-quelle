@@ -40,8 +40,13 @@
 
 <main>
 
-  <!-- Hero -->
+  <!-- Hero — video na pozadí jako na původním webu (zpomalená spirála) -->
   <section class="hero">
+    <video class="hero-video" autoplay muted loop playsinline data-rate="0.5"
+           poster="assets/img/web/hero-poster.jpg" aria-hidden="true">
+      <source src="assets/video/hero-spirale.mp4" type="video/mp4">
+    </video>
+    <div class="hero-veil" aria-hidden="true"></div>
     <div class="container hero-grid">
       <div class="hero-copy">
         <p class="eyebrow">Pilates · Yoga · Reiki · Massage</p>
@@ -56,12 +61,14 @@
         </div>
       </div>
       <div class="hero-collage" aria-hidden="true">
-        <figure class="c1"><img src="assets/img/web/home-waldweg.jpg" alt=""></figure>
-        <figure class="c2"><img src="assets/img/web/home-pilatesmatte.jpg" alt=""></figure>
-        <figure class="c3"><img src="assets/img/web/home-aromaoel.jpg" alt=""></figure>
+        <figure class="c1" data-parallax="0.05"><img src="assets/img/web/home-waldweg.jpg" alt=""></figure>
+        <figure class="c2" data-parallax="0.12"><img src="assets/img/web/home-pilatesmatte.jpg" alt=""></figure>
+        <figure class="c3" data-parallax="0.2"><img src="assets/img/web/home-aromaoel.jpg" alt=""></figure>
       </div>
     </div>
   </section>
+
+  <div class="sheet">
 
   <!-- Angebote -->
   <section class="section">
@@ -119,6 +126,9 @@
     </div>
   </section>
 
+  <!-- Parallaxový pás — pevné pozadí -->
+  <div class="parallax-band" style="background-image: url('assets/img/web/galerie-oele.jpg');" role="presentation"></div>
+
   <!-- Wichtige Informationen -->
   <section class="section mauve" id="informationen">
     <div class="container">
@@ -162,6 +172,13 @@
     </div>
   </section>
 
+  <!-- Parallaxový pás — pevné pozadí -->
+  <div class="parallax-band" style="background-image: url('assets/img/web/massage-kerzen.jpg');" role="presentation">
+    <ul class="chakra-dots" aria-hidden="true">
+      <li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+    </ul>
+  </div>
+
   <!-- Kontakt -->
   <section class="section tinted" id="kontakt">
     <div class="container">
@@ -204,6 +221,8 @@
       </div>
     </div>
   </section>
+
+  </div><!-- /.sheet -->
 
 </main>
 
