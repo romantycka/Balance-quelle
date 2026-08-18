@@ -23,6 +23,9 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
+/* Atribut hidden musí přebít display z tříd (popup, jeho tlačítko a obrázek) */
+[hidden] { display: none !important; }
+
 html { scroll-behavior: smooth; }
 
 body {
