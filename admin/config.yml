@@ -15,6 +15,10 @@ backend:
 # web server, pak otevři http://localhost:8123/admin/
 local_backend: true
 
+# Skryje tlačítko „Check for Preview" — hlídá náhledová nasazení na Netlify,
+# která tenhle web nepoužívá, takže tu jen mate.
+show_preview_links: false
+
 # Obrázky: stejná složka, jakou používá web — Aranka tak v administraci
 # vidí i všechny stávající fotky a může je znovu použít.
 media_folder: assets/img/web

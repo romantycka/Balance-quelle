@@ -49,6 +49,18 @@ Přepínač zap/vyp u popupu je proto řešený jako výběr **ANO/NE** (`select
 ne jako `boolean` — hodnota je v souboru čitelná na první pohled
 (`"aktiv": "ano"` / `"ne"`); web rozumí i staršímu `true`.
 
+## Prvky rozhraní, které nejsou od nás
+
+- **Check for Preview** (vpravo nahoře) — hledá „deploy preview" nasazení
+  (funkce Netlify). Tenhle web na Netlify neběží, takže tlačítko nikdy nic
+  nenajde a nereaguje. V config.yml je proto `show_preview_links: false`
+  (dle dokumentace Decapu); v lokálním režimu se tlačítko přesto zobrazuje —
+  po zprovoznění OAuth ověřit, zda v ostrém provozu zmizí. Pokud ne, skryjeme
+  ho v admin/index.html.
+- **Ikona oka** = zapnout/vypnout náhledový panel vpravo (Toggle preview).
+- **Ikona šipek nahoru/dolů** = synchronní posouvání formuláře a náhledu
+  (Sync scrolling) — při rolování formuláře roluje i náhled.
+
 ## Co zbývá pro ostrý provoz (potřebuje tvé účty)
 
 Administrace na živém webu vyžaduje přihlašování přes GitHub OAuth — to nejde
