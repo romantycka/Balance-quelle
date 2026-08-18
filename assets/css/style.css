@@ -416,6 +416,11 @@ h3 { font-size: clamp(1.35rem, 2.2vw, 1.7rem); }
   z-index: 1;
   padding: 1.6rem;
   width: 100%;
+  /* Pevná výška textového bloku: nadpisy, podtitulky i odkazy všech karet
+     tak leží na stejné lince i při různě dlouhých podtitulcích. */
+  min-height: 12.5rem;
+  display: flex;
+  flex-direction: column;
 }
 .card-body h3 { color: #fff; margin-bottom: .2rem; }
 .card-body p {
@@ -423,11 +428,14 @@ h3 { font-size: clamp(1.35rem, 2.2vw, 1.7rem); }
   font-family: var(--font-display);
   font-style: italic;
   font-size: 1.05rem;
+  line-height: 1.5;
   opacity: .9;
 }
 .card-body .card-link {
   display: inline-block;
-  margin-top: .9rem;
+  align-self: flex-start;   /* podtržení jen pod textem, ne přes celou kartu */
+  margin-top: auto;         /* drží odkaz u spodní hrany — na stejné lince */
+  padding-top: .9rem;
   font-size: .74rem;
   letter-spacing: .26em;
   text-transform: uppercase;
