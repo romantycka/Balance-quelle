@@ -30,6 +30,25 @@ Pak otevři http://localhost:8123/admin/ — díky `local_backend: true` se
 administrace otevře rovnou proti lokálním souborům (bez GitHub přihlášení).
 Ulož změnu, obnov web a uvidíš ji.
 
+## Známé chování při ukládání (ověřeno v lokálním režimu)
+
+1. **Uložení je dvoukrokové:** `Publish` → `Publish now`. Po prvním kliknutí
+   se jen rozbalí nabídka. Dokud vlevo nahoře svítí `UNSAVED CHANGES`,
+   uloženo NENÍ.
+2. **V jednom načtení stránky se spolehlivě uloží jen první změna.** Druhé
+   `Publish now` bez obnovení stránky rozhraní odhlásí jako „CHANGES SAVED",
+   ale soubor nezmění. **Řešení: po uložení stránku obnovit (F5) a teprve
+   pak dělat další změnu.** Ověřeno oběma směry (ano→ne i ne→ano).
+
+   Toto chování jsme pozorovali v **lokálním** režimu (`decap-server`).
+   Zda k němu dochází i proti GitHubu, půjde ověřit až po zprovoznění OAuth
+   (níže) — do té doby ber pravidlo „po uložení obnovit stránku" jako jisté
+   řešení pro obě varianty; v návodu pro Aranku (NAVOD-ARANKA.md) je uvedené.
+
+Přepínač zap/vyp u popupu je proto řešený jako výběr **ANO/NE** (`select`),
+ne jako `boolean` — hodnota je v souboru čitelná na první pohled
+(`"aktiv": "ano"` / `"ne"`); web rozumí i staršímu `true`.
+
 ## Co zbývá pro ostrý provoz (potřebuje tvé účty)
 
 Administrace na živém webu vyžaduje přihlašování přes GitHub OAuth — to nejde

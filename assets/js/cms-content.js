@@ -57,7 +57,9 @@ if (postsWrap) {
 const popup = document.getElementById("popup");
 if (popup) {
   loadJSON("content/popup.json").then((data) => {
-    if (!data?.aktiv || sessionStorage.getItem("popupDismissed")) return;
+    // aktiv: "ano" z administrace (starší verze používaly true)
+    const zapnuto = data?.aktiv === true || String(data?.aktiv).toLowerCase() === "ano";
+    if (!zapnuto || sessionStorage.getItem("popupDismissed")) return;
 
     popup.querySelector("h3").textContent = data.titel ?? "";
     const textEl = popup.querySelector(".popup-text");

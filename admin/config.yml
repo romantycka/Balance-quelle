@@ -15,8 +15,10 @@ backend:
 # web server, pak otevři http://localhost:8123/admin/
 local_backend: true
 
-media_folder: assets/img/uploads
-public_folder: assets/img/uploads
+# Obrázky: stejná složka, jakou používá web — Aranka tak v administraci
+# vidí i všechny stávající fotky a může je znovu použít.
+media_folder: assets/img/web
+public_folder: assets/img/web
 
 collections:
   - name: obsah
@@ -27,11 +29,16 @@ collections:
         label: "Oznámení na úvodní stránce · Ankündigung (Popup)"
         file: content/popup.json
         fields:
+          # Pozor: widget "boolean" se v Decapu neuloží, když se přepne na
+          # vypnuto (false bere jako prázdnou hodnotu). Proto výběr ANO/NE.
           - name: aktiv
             label: "Zobrazit oznámení · Ankündigung anzeigen"
-            widget: boolean
-            default: false
-            hint: "Zapnuto = návštěvníkům se na úvodní stránce zobrazí okno s oznámením. · Ein = Besucher sehen das Popup auf der Startseite."
+            widget: select
+            default: "ne"
+            options:
+              - { label: "NE — nezobrazovat · NEIN — nicht anzeigen", value: "ne" }
+              - { label: "ANO — zobrazit na úvodní stránce · JA — auf der Startseite anzeigen", value: "ano" }
+            hint: "⚠️ ULOŽENÍ: nahoře Publish → Publish now (jinak se změna neuloží!) · SPEICHERN: oben Publish → Publish now."
           - name: titel
             label: "Nadpis · Titel"
             widget: string
@@ -59,6 +66,7 @@ collections:
         fields:
           - name: pilates
             label: "Pilates"
+            hint: "⚠️ ULOŽENÍ: nahoře Publish → Publish now (jinak se změna neuloží!) · SPEICHERN: oben Publish → Publish now."
             widget: list
             fields: &polozka
               - { name: name, label: "Název · Bezeichnung", widget: string }
@@ -80,7 +88,7 @@ collections:
           - name: beitraege
             label: "Příspěvky · Beiträge"
             widget: list
-            hint: "Nový příspěvek přidej nahoru — na webu se zobrazují v tomto pořadí. · Neue Beiträge oben einfügen."
+            hint: "Nový příspěvek přidej nahoru — na webu se zobrazují v tomto pořadí. · Neue Beiträge oben einfügen.  ⚠️ ULOŽENÍ: nahoře Publish → Publish now · SPEICHERN: oben Publish → Publish now."
             fields:
               - { name: titel, label: "Nadpis · Titel", widget: string }
               - { name: datum, label: "Datum · Datum", widget: string, hint: "Volný text, např. 8. Apr. · Freitext, z. B. 8. Apr." }
