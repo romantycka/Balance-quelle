@@ -34,6 +34,8 @@ body {
   color: var(--ink);
   background: var(--warm-white);
   -webkit-font-smoothing: antialiased;
+  /* vlastní stacking context — patička se z-index: -1 jinak spadne pod body a nejde kliknout */
+  isolation: isolate;
 }
 
 img { max-width: 100%; display: block; }
